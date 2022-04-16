@@ -36,11 +36,11 @@ def login(auth_details: AuthDetails):
     return {"token": token}
 
 
-@app.post("/unprotected")
+@app.get("/unprotected")
 def unprotected():
     return {"hello": "world"}
 
 
-@app.post("/protected")
+@app.get("/protected")
 def protected(username=Depends(auth_handler.auth_wrapper)):
     return {"name": username}
