@@ -1,10 +1,9 @@
-from time import time
 import jwt
 
 from fastapi import HTTPException, Security
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from passlib.context import CryptContext
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
 
 
 class AuthHandler:
