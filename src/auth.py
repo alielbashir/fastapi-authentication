@@ -28,7 +28,7 @@ class AuthHandler:
             "iat": datetime.utcnow(),
             "sub": user_id,
         }
-        return jwt.encode(payload, self.secret, algorithm="H256")
+        return jwt.encode(payload, self.secret, algorithm="HS256")
 
     def decode_token(self, token):
         """
@@ -36,7 +36,7 @@ class AuthHandler:
         returns 401 http exception if invalid or expired token
         """
         try:
-            payload = jwt.decode(token, self.secret, algorithms=["H256"])
+            payload = jwt.decode(token, self.secret, algorithms=["HS256"])
             return payload["sub"]
         except jwt.ExpiredSignatureError:
             raise HTTPException(
