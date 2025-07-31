@@ -6,7 +6,7 @@ from .schema import AuthDetails
 app = FastAPI()
 
 auth_handler = AuthHandler()
-users = []
+users: list[dict[str, str]] = []
 
 
 @app.post("/register", status_code=201)
